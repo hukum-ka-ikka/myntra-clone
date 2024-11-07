@@ -6,6 +6,10 @@ import {
   addProductToBag,
   removeProductFromBag,
 } from "../redux/reducers/productSlice";
+import {
+  addProductToCategoryBag,
+  removeProductFromCategoryBag,
+} from "../redux/reducers/categorySlice";
 
 export const fetchBag = async (dispatch) => {
   await dbConnect();
@@ -29,6 +33,7 @@ export const addToBag = async (product, dispatch) => {
     toast.success("Added to Bag!", { id: toastId });
     dispatch(updateBag(response.data.newBag));
     dispatch(addProductToBag(product.id));
+    dispatch(addProductToCategoryBag(product));
 
     return response.data.newBag;
   } catch (error) {
@@ -52,10 +57,11 @@ export const removeFromBag = async (product, dispatch) => {
     if (response.data.newBag === null) {
       dispatch(emptyBag());
       dispatch(removeProductFromBag(product.id));
-
+      dispatch(removeProductFromCategoryBag(product));
     } else {
       dispatch(updateBag(response.data.newBag));
       dispatch(removeProductFromBag(product.id));
+      dispatch(removeProductFromCategoryBag(product));
     }
 
     return response.data.newBag;

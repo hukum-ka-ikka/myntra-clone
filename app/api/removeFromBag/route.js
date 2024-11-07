@@ -30,6 +30,7 @@ export async function PUT(request) {
     }
 
     const userBag = await Bag.findById(user.bag);
+    console.log("User is",user)
 
     let newBag;
     if (userBag.products.length === 1) {
