@@ -1,8 +1,8 @@
 "use client";
 
-import { fetchProducts } from "@/app/services/Product";
+import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { fetchProducts } from "@/app/services/Product";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../core/ProductCard";
 import myntraFooter from "../../../public/Images/myntra-footer.png";
@@ -76,4 +76,10 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading Products...</div>}>
+      <Products />
+    </Suspense>
+  );
+}
