@@ -10,7 +10,7 @@ const BagProductCard = ({ product }) => {
   return (
     <div className="w-full flex gap-2 border py-3 px-2">
       <div>
-        <Image src={product.images[0]} width={150} height={200} />
+        <Image src={product.images[0]} width={150} height={200} alt="Loading"/>
       </div>
       <div className="w-full flex flex-col gap-2">
         <div className="w-[80%] flex flex-col">
