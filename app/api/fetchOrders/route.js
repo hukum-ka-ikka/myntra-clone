@@ -2,7 +2,6 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { User } from "@/models/User";
-import { Order } from "@/models/Order";
 
 import { dbConnect } from "@/configs/database";
 
@@ -17,7 +16,6 @@ export async function GET(request) {
     }
 
     await dbConnect();
-    console.log("HIiiiiiiiiiiiiiii");
 
     const user = await User.findOne({ email: session.user.email })
       .populate("orders")

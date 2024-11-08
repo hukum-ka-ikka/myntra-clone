@@ -2,6 +2,7 @@ import React from "react";
 import { FaRegUser } from "react-icons/fa";
 import AuthComp from "./AuthComp";
 import Link from "next/link";
+import OrderPageRouter from "./OrderPageRouter";
 
 const ProfileIcon = () => {
   return (
@@ -13,12 +14,8 @@ const ProfileIcon = () => {
 
         <div className="border-b"></div>
         <div className="flex flex-col text-sm tracking-wide font-thin gap-[2px]">
-          <Link href="/orders" className="hover:font-bold">
-            Orders
-          </Link>
-          <Link href="/wishlist" className="hover:font-bold">
-            Wishlist
-          </Link>
+          <OrderPageRouter />
+          <p className="hover:font-bold">Wishlist</p>
           <p className="hover:font-bold">Gift Cards</p>
           <p className="hover:font-bold">Contact Us</p>
           <div className="flex gap-2">

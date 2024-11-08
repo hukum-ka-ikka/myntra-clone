@@ -1,16 +1,9 @@
-import { addToOrders } from "@/app/services/Order";
-import { useSession } from "next-auth/react";
 import React from "react";
 import { useDispatch } from "react-redux";
+import PlaceOrder from "./PlaceOrder";
 
 const PriceDetails = ({ bag, total }) => {
   const totalAmount = Math.round(total * 100) / 100;
-  const { data: session } = useSession();
-  const dispatch = useDispatch();
-
-  const handlePlaceOrderClick = async () => {
-    await addToOrders(bag, totalAmount + 20, session.user, dispatch);
-  };
 
   return (
     <div className="w-[40%] flex flex-col gap-3 text-sm border h-max p-3 text-gray-700">
@@ -32,12 +25,7 @@ const PriceDetails = ({ bag, total }) => {
           <p>Amount Payable</p>
           <p>₹ {totalAmount + 20}</p>
         </div>
-        <button
-          onClick={handlePlaceOrderClick}
-          className="text-md font-bold text-white bg-[#FF3F6C] py-2"
-        >
-          PLACE ORDER
-        </button>
+        <PlaceOrder total={total} bag={bag} />
       </div>
     </div>
   );

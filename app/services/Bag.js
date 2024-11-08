@@ -76,10 +76,11 @@ export const removeFromBag = async (product, dispatch) => {
   }
 };
 
-export const clearBag = async (dispatch) => {
+export const clearBag = async (dispatch, router) => {
   const toastId = toast.loading("Clearing Bag...");
   try {
     const response = await axios.delete("/api/clearBag");
+    router.push("/orders");
     toast.success("Cleared Bag", { id: toastId });
   } catch (error) {
     console.log(error);

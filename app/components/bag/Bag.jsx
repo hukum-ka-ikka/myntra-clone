@@ -18,7 +18,6 @@ const Bag = () => {
   const getProducts = async () => {
     const products = await fetchProducts(dispatch);
   };
-  console.log(emptyBag);
 
   useEffect(() => {
     getProducts();
@@ -28,7 +27,7 @@ const Bag = () => {
     <div className="w-full flex justify-center mb-2">
       {bag.length === 0 ? (
         <div className="w-full flex flex-col justify-center items-center h-[500px]">
-          <Image src={emptyBag} width={200} height={200} />
+          <Image src={emptyBag} width={200} height={200} alt="Loading" />
           <p className="text-2xl text-gray-700 font-bold">
             Hey, it feels so light!
           </p>

@@ -23,8 +23,7 @@ export const fetchOrders = async () => {
   }
 };
 
-export const addToOrders = async (products, total, user, dispatch) => {
-  console.log(user);
+export const addToOrders = async (products, total, user, dispatch, router) => {
   try {
     // Loading the script of Razorpay SDK
     const res = await loadScript(
@@ -38,7 +37,6 @@ export const addToOrders = async (products, total, user, dispatch) => {
       return;
     }
     const response = await axios.post("/api/createOrder", { total });
-    console.log("Printing Create order response", response.data.order);
     const options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       amount: `${response.data.order.amount}`,
@@ -48,7 +46,7 @@ export const addToOrders = async (products, total, user, dispatch) => {
       order_id: response.data.order.id,
       handler: async function (response) {
         await verifyPayment({ ...response, products });
-        await clearBag(dispatch);
+        await clearBag(dispatch, router);
       },
       prefill: {
         name: `${user.name}`,

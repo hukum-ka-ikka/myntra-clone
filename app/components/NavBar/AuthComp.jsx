@@ -1,6 +1,8 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const AuthComp = () => {
@@ -25,7 +27,7 @@ const AuthComp = () => {
             onClick={handleLogout}
             className="text-sm appearance-none text-left w-max hover:font-bold hover:text-red-500"
           >
-            Logout
+            <Link href="/">Logout</Link>
           </button>
         </>
       ) : (

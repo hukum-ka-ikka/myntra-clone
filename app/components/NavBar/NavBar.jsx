@@ -1,6 +1,3 @@
-import Image from "next/image";
-import React from "react";
-import myntraLogo from "../../../public/Logo/myntra-logo.svg";
 import data from "../../../categoryData.json";
 import ProfileIcon from "./ProfileIcon";
 import WishlistIcon from "./WishlistIcon";
@@ -9,6 +6,7 @@ import Declaration from "./Declaration";
 import { FiSearch } from "react-icons/fi";
 import Category from "./Category";
 import CategoryName from "./CategoryName";
+import MyntraLogo from "./MyntraLogo";
 
 const NavBar = () => {
   return (
@@ -16,10 +14,10 @@ const NavBar = () => {
       className="w-full min-w-[1150px] flex justify-center border sticky top-0 bg-white z-10"
       style={{ boxShadow: "1px -20px 30px #000000" }}
     >
+      <Declaration />
       <div className="h-20 max-w-[1250px] w-full items-center  flex justify-between relative">
-        <Declaration />
         <div className="flex gap-4 items-center pl-10 h-full">
-          <Image src={myntraLogo} className="h-10 w-14" alt="Loading" />
+          <MyntraLogo />
           <div className="flex items-center h-full">
             {data.map((category, index) => (
               <div className=" h-full flex px-3 items-center group">

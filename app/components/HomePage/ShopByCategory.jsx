@@ -9,7 +9,7 @@ import CategoryBox from "./CategoryBox";
 const ShopByCategory = () => {
   const categories = useSelector((state) => state.category.categories);
   return (
-    <div className="w-full flex flex-col gap-2">
+    <div className="w-full flex flex-col gap-4">
       <Image src={shopByCategoryImage} alt="Loading" />
       <div className="flex w-full gap-4">
         {categories &&
