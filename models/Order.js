@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { User } from "./User";
 
 const orderSchema = new mongoose.Schema({
   productId: {
@@ -12,7 +13,7 @@ const orderSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 

@@ -14,9 +14,7 @@ export async function GET(request) {
         { status: 401 }
       );
     }
-
     await dbConnect();
-
     const user = await User.findOne({ email: session.user.email })
       .populate("orders")
       .exec();

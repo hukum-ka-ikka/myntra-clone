@@ -1,4 +1,5 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
+import { User } from "./User";
 
 const bagSchema = new mongoose.Schema({
   products: [
